@@ -1,0 +1,82 @@
+{
+  "name": "@open-panel/ipc",
+  "version": "0.1.0",
+  "description": "Typed WebSocket IPC contract for OpenPanel, with a ws-based server (daemon-only, ./server) and a client built on the standard WebSocket global that works in Node and in the browser/webview (./client).",
+  "type": "module",
+  "license": "MIT",
+  "author": "OpenPanel contributors",
+  "homepage": "https://github.com/open-panel/package-ipc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-panel/package-ipc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/open-panel/package-ipc/issues"
+  },
+  "keywords": [
+    "openpanel",
+    "macropad",
+    "stream-deck",
+    "ipc",
+    "websocket"
+  ],
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts",
+    "./contract": "./src/contract.ts",
+    "./wire": "./src/wire.ts"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./client": {
+        "types": "./dist/client.d.ts",
+        "default": "./dist/client.js"
+      },
+      "./server": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      },
+      "./contract": {
+        "types": "./dist/contract.d.ts",
+        "default": "./dist/contract.js"
+      },
+      "./wire": {
+        "types": "./dist/wire.d.ts",
+        "default": "./dist/wire.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@open-panel/shared": "^0.1.0",
+    "ws": "^8.18.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.13",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
